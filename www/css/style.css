@@ -1,0 +1,190 @@
+.menu-content{
+	background: #19725e !important;
+}
+/*@font-face {
+    font-family: Quicksand-Regular !important;
+    src: url(fonts/Quicksand-Regular.otf);
+}
+div, h1, h2, h3, h4, h5, h6, p, span, input, button{
+	font-family: Quicksand-Regular !important;
+}*/
+ion-header-bar{
+	height: 80px !important;
+}
+.header-btn-left{
+	max-height: 34px !important;
+	padding-left: 4% !important;
+}
+.header-btn-right{
+	max-height: 34px !important;
+	padding-left: 4% !important;
+}
+.font-style{
+	font-style: italic !important;
+}
+.header-img{
+	width: 118px !important;
+	margin-top: 4px !important;
+	height: 40px !important;
+}
+/*.platform-ios.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader){
+	height: 94px !important;
+	padding-top: 6% !important;
+}*/
+.background-color{
+	background: #50e3c2 !important;
+}
+.pane[hide-nav-bar="true"] .has-tabs-top {
+     top: 0px !important; 
+}
+.platform-ios.platform-cordova:not(.fullscreen) .tabs-top > .tabs, .platform-ios.platform-cordova:not(.fullscreen) .tabs.tabs-top {
+    top: 0 !important;
+}
+.tab-item{
+	max-width: 100% !important;
+}
+.tabs-top.tabs-striped .tab-item.tab-item-active, .tabs-top.tabs-striped .tab-item.active, .tabs-top.tabs-striped .tab-item.activated {
+    margin-top: 1px;
+    border-width: 0px 0px 2px 0px !important;
+    border-style: solid;
+    border-color: #19725e !important;
+}
+
+.tabs-striped.tabs-background-positive .tabs {
+    background-color: #50e3c2 !important;
+    background-image: none;
+    border-color: #50e3c2 !important;
+}
+.profile-pic{
+	width: 100px;
+    height: 100px;
+    margin: 12px auto;
+	position:relative;
+    border-radius: 100%;
+    border: 1px solid #333;
+}
+.profile-pic-img {
+	width: 90px;
+    border-radius: 50%;
+    height: 90px;
+    margin: 4px;
+}
+.item-stacked-label .input-label, .item-stacked-label .icon {
+    display: inline-block;
+    padding: 4px 0 0 0px;
+    vertical-align: middle;
+    font-weight: 600 !important;
+}
+.profile-camera{
+	position: absolute !important;
+    font-size: 20px !important;
+    padding: 7px !important;
+    bottom: 0px !important;
+    background: #19725e !important;
+    border-radius: 50% !important;
+    width: 35px !important;
+    height: 35px !important;
+    text-align: center !important;
+    right: 0 !important;
+    color: #fff !important;
+}
+.action-sheet .button.destructive {
+    background: #145b4b !important;
+    color: #FFF !important;
+    width: 90% !important;
+    margin: 0 auto !important;
+    margin-bottom: 5px !important;
+}
+.platform-android .action-sheet-group{
+	background: #FFF !important;
+}
+.no-margin{
+	margin: 0px !important;
+}
+.button-background{
+	background: #19725e !important;
+}
+.platform-android .action-sheet .action-sheet-title, .platform-android .action-sheet .button{
+	text-align: center !important;
+}
+.text-dark{
+	color: #19725e !important;
+}
+.text-white{
+	color: #fff !important;
+	font-weight: 700 !important;
+}
+.text-gray{
+	color: #666666 !important;
+}
+.font-bold{
+	font-weight: bold !important; 
+}
+.no-background{
+	background: transparent !important;
+	box-shadow: none !important;
+	border: none !important; 
+}
+.boder-white{
+	border: 1px solid #fff !important;
+}
+.item {
+    border-color: #3c7569 !important;
+}
+.border-bottom{
+	border-top: none !important;
+    border-left: none !important;
+    border-right: none !important;
+    border-bottom:1px solid #b6b7b7 !important;
+}
+.background-transparent{
+	background: transparent !important;
+}
+.side-menu-active{
+	border-left: 7px solid #50e3c2 !important;
+}
+.background-white{
+	background: #FFF !important;
+}
+.fs-12{
+	font-size: 12px !important;
+}
+.fs-14{
+	font-size: 14px !important;
+}
+.fs-16{
+	font-size: 16px !important;
+}
+.fs-18{
+	font-size: 18px !important;
+}
+.fs-20{
+	font-size: 20px !important;
+}
+.fs-22{
+	font-size: 22px !important;
+}
+.fs-24{
+	font-size: 24px !important;
+}
+.fs-26{
+	font-size: 26px !important;
+}
+.fs-28{
+	font-size: 28px !important;
+}
+.fs-30{
+	font-size: 30px !important;
+}
+.item-icon-left {
+    padding-left: 65px !important;
+}
+.menu-line-height{
+	line-height: 1.5 !important;
+}
+.home-icon{
+	background: url(../img/home.png) fixed !important;
+    width: 40px;
+    height: 30px !important;
+    position: absolute !important;
+}
