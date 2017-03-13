@@ -1,5 +1,14 @@
+<style>
+.platform-android .action-sheet .action-sheet-title, .platform-android .action-sheet .button {
+    text-align: center !important;
+    background: #145b4b !important;
+    color: #fff !important;
+    width: 90% !important;
+    margin: 18px auto !important;
+}
+</style>
 <ion-side-menus enable-menu-with-back-views="false">
-  <ion-side-menu-content>
+  <ion-side-menu-content ion-side-menu-content-scale>
     <ion-nav-bar class="background-color text-white">
     <ion-nav-back-button>
     </ion-nav-back-button>
@@ -10,16 +19,16 @@
       </button>
     </ion-nav-buttons>
     <ion-nav-buttons side="right">
-      <button class="button button-icon text-white boder-white">
+      <button class="button button-icon text-white boder-white" onclick="javascript:history.go(-1)">
         Back
       </button>
     </ion-nav-buttons>
    </ion-nav-bar>
 
     <ion-nav-view name="menuContent"></ion-nav-view>
-</ion-side-menu-content class="menu-content">
 
-  <ion-side-menu side="left" expose-aside-when="large">
+</ion-side-menu-content class="menu-content bar-calm menu-left-axis">
+ <ion-side-menu side="left" expose-aside-when="large">
     <ion-content class="menu-content"> 
      <div class="background-transparent list">
         <div class="item background-transparent" style="padding: 44px;">
@@ -30,7 +39,7 @@
           <img src="img/home.png" align="left" style="width: 25px !important;margin-right: 10px !important;" />
           Home
         </div>
-        <div nav-clear menu-close ui-sref="nav.home" ng-class="(activefeild == 'complain')? 'side-menu-active':''" ng-click="activefeild = 'complain'" class="background-transparent item text-white menu-line-height">
+        <div nav-clear menu-close ui-sref="nav.complaint" ng-class="(activefeild == 'complain')? 'side-menu-active':''" ng-click="activefeild = 'complain'" class="background-transparent item text-white menu-line-height">
           <img src="img/edit.png" align="left" style="width: 25px !important;margin-right: 10px !important;" />
           Compliment/Complain
         </div>
@@ -42,7 +51,7 @@
          <img src="img/password.png" align="left" style="width: 25px !important;margin-right: 10px !important;" />
           Password
         </div>
-        <div nav-clear menu-close ng-class="(activefeild == 'signout')? 'side-menu-active':''" ng-click="activefeild = 'signout'" class="background-transparent item text-white menu-line-height" ui-sref="login">
+        <div ng-class="(activefeild == 'signout')? 'side-menu-active':''" ng-click="activefeild = 'signout' ; show()" class="background-transparent item text-white menu-line-height">
           <img src="img/logout.png" align="left" style="width: 25px !important;margin-right: 10px !important;" />
           Sign out
         </div>

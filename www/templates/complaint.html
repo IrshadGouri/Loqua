@@ -1,0 +1,171 @@
+<ion-view hide-nav-bar="true">
+  <ion-header-bar class="background-color">
+    <button  menu-toggle="left" class="button button-icon text-white boder-white header-btn-left">Menu</button>
+    <div class="h1 title">
+    <center>
+      <img src="img/logo.png" class="header-img">
+    </center>
+    </div>
+    <button onclick="javascript:history.go(-1)" class="button button-icon text-white boder-white header-btn-right">Back</button>
+  </ion-header-bar>
+  <ion-content scroll="false">
+      <ion-tabs class="tabs-striped tabs-top tabs-background-positive tabs-color-light">
+
+        <ion-tab title="COMPLIMENT" icon-on="" icon-off="">
+          <ion-content scroll="true" style="top: 50px !important;">
+            <div class="list padding">
+            <form name="compliment" novalidate>
+              <h2 class="font-style text-dark text-center fs-18 font-bold">Because good services<br/> make a difference</h2>
+              <label class="item item-input item-stacked-label border-bottom">
+                <span class="input-label text-dark fs-12">COMPANY :</span>
+                <input type="text" ng-model="complimentForm.company_name" name="company" placeholder="John" required>
+              </label>
+              <div ng-if="compliment.company.$invalid && !compliment.company.$pristine" class="error-message padding-right">Invalid COMPANY</div>
+
+              <label class="item item-input item-stacked-label border-bottom">
+                <span class="input-label text-dark fs-12">WHO/WHAT :</span>
+                <input type="text"  ng-model="complimentForm.description" name="what" placeholder="Stephen, Superviser on duty man in star ware T-shirt" required>
+              </label>
+              <div ng-if="compliment.what.$invalid && !compliment.what.$pristine" class="error-message padding-right">Invalid WHO/WHAT</div>
+
+              <div class="row no-padding border-bottom">
+                <div class="col col-80 no-padding">
+                  <label class="item item-input item-stacked-label no-border">
+                    <span class="input-label text-dark fs-12">WHERE :</span>
+                    <input type="text" ng-model="complimentForm.where" name="where"  placeholder="Where" required>
+                  </label>
+                </div>
+                <div class="col col-20 no-padding" style="margin: 1px;">
+                  <button  style="width: 40px;min-height: 30px !important;max-height: 38px !important;float: right;    right: 5px;margin-top: 20px !important;" class="button button-block menu-content text-white button-icon icon fs-20 ion-ios-paperplane ">
+                  </button>
+                </div>
+              </div>
+              <div ng-if="compliment.where.$invalid && !compliment.where.$pristine" class="error-message padding-right">Invalid Where</div>
+
+              <label class="item item-input item-stacked-label border-bottom" data-ng-repeat="choice in choices">
+                <span class="input-label text-dark fs-12">WHY :</span>
+                <textarea rows="3" cols="3"  ng-model="complimentForm.why" type="text" name="whyform" placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam at lorem in magna consequat porttitor." required></textarea>
+              </label>
+
+              <div ng-if="compliment.whyform.$invalid && !compliment.whyform.$pristine" class="error-message padding-right">Invalid Why</div>
+             
+              <a ng-if="choices.length==1" class="item no-background text-right font-style" ng-click="addNewChoice()" style="color: #00f;padding: 10px; text-decoration: underline;">
+                  I want to say more
+              </a>
+              <!-- <div id="choicesDisplay">
+                {{ choices }}
+             </div> -->
+              <label class="item item-input item-stacked-label border-bottom">
+                <span class="input-label text-dark fs-12">HOW DOES TO MAKE :</span>
+                <input type="text"  ng-model="complimentForm.how_does_to_make" name="make" placeholder="How does to make" required>
+              </label>
+              <div ng-if="compliment.make.$invalid && !compliment.make.$pristine" class="error-message padding-right">Invalid HOW DOES TO MAKE</div>
+
+              <!-- <label class="item item-input item-stacked-label no-border" style="padding-top: 5%;"> -->
+                <div class="row no-padding border-bottom" style=" padding-top: 5% !important;">
+                  <div class="col col-80 no-padding">
+                    <h2 class="text-dark fs-14">TWEET TO COMPANY ? <span style="margin: 0px 7px 7px 7px;" class="icon fs-20 ion-information-circled" ng-click="openPopover($event)"></span></h2>
+                  </div>
+                  <div class="col col-20 no-padding" ng-click="checkdata()">
+                    <ion-checkbox class="no-border" ng-model="filter.check"></ion-checkbox>
+                  </div>
+                </div>
+              <!-- </label> -->
+
+              <!-- <label class="item item-input item-stacked-label no-border" style="padding-top: 5%;"> -->
+                <div class="row no-padding border-bottom" style=" padding-top: 5% !important;">
+                  <div class="col col-67 no-padding">
+                    <h2 class="text-dark fs-12">HAPPYNESS / SATISFACTION LEVEL?</h2>
+                  </div>
+                  <div class="col col-33 no-padding">
+                    <!-- <span class="happ-active-c"></span><span style="margin-left: 22px !important" class="happ-active-c"></span><span style="margin-left: 44px !important"  class="happ-active-c"></span><span style="margin-left: 66px !important"  class="happ-active-c"></span><span style="margin-left: 88px !important"  class="happ-active-c"></span> -->
+                    <ionic-ratings style="margin: -5px;" ng-model="complimentForm.rating" name="star" ratingsobj='ratingsObject' index='$index' required></ionic-ratings>
+                  </div>
+                </div>
+                <div ng-if="compliment.star.$invalid && !compliment.star.$pristine" class="error-message padding-right">Invalid HAPPYNESS / SATISFACTION LEVEL?</div>
+              </form>
+              <!-- </label> -->
+              <button ng-disabled="compliment.$invalid" ng-click="complimentUser();" class="button button-block menu-content text-white">SUBMIT</button>
+              <br /><br /><br />
+            </div>
+          </ion-content>
+        </ion-tab> 
+
+        <ion-tab title="COMPLAIN" icon-on="" icon-off="">
+         <ion-content scroll="true" style="top: 50px !important;">
+            <div class="list padding">
+            <form name="complainform" novalidate>
+              <h2 class="font-style text-red text-center fs-18 font-bold">Make the world better<br/> One complaint at a time</h2>
+              <label class="item item-input item-stacked-label border-bottom">
+                <span class="input-label text-dark fs-12">COMPANY :</span>
+                <input type="text" ng-model="complaintForm.company_name" name="companyC" placeholder="John" required>
+              </label>
+              <div ng-if="complainform.companyC.$invalid && !complainform.companyC.$pristine" class="error-message padding-right">Invalid Company</div>
+
+              <label class="item item-input item-stacked-label border-bottom">
+                <span class="input-label text-dark fs-12">WHO/WHAT :</span>
+                <input type="text"  ng-model="complaintForm.description" name="whatC" placeholder="Stephen, Superviser on duty man in star ware T-shirt" required>
+              </label>
+              <div ng-if="complainform.whatC.$invalid && !complainform.whatC.$pristine" class="error-message padding-right">Invalid WHO/WHAT</div>
+              
+              <div class="row no-padding border-bottom">
+                <div class="col col-80 no-padding">
+                  <label class="item item-input item-stacked-label no-border">
+                    <span class="input-label text-dark fs-12">WHERE :</span>
+                    <input type="text" ng-model="complaintForm.where" name="whereC" placeholder="Where" required>
+                  </label>
+                </div>
+                <div class="col col-20 no-padding" style="margin: 1px;">
+                  <button style="width: 40px;min-height: 30px !important;max-height: 38px !important;float: right;    right: 5px;margin-top: 20px !important;" class="button button-block menu-content text-white button-icon icon fs-20 ion-ios-paperplane ">
+                  </button>
+                </div>
+              </div>
+              <div ng-if="complainform.whereC.$invalid && !complainform.whereC.$pristine" class="error-message padding-right">Invalid Where</div>
+
+              <label class="item item-input item-stacked-label border-bottom" data-ng-repeat="choice in choices">
+                <span class="input-label text-dark fs-12">WHY :</span>
+                <textarea rows="3" cols="3"  ng-model="complaintForm.why" name="whyform" type="text" placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam at lorem in magna consequat porttitor."></textarea>
+              </label>
+              <div ng-if="complainform.whyform.$invalid && !complainform.whyform.$pristine" class="error-message padding-right">Invalid Why</div>
+
+              <a ng-if="choices.length==1" class="item no-background text-right font-style" ng-click="addNewChoice()" style="color: #00f;padding: 10px; text-decoration: underline;">
+                  I want to say more
+              </a>
+              <label class="item item-input item-stacked-label border-bottom">
+                <span class="input-label text-dark fs-12">HOW DOES TO MAKE :</span>
+                <input type="text" ng-model="complaintForm.how_does_to_make" name="make" placeholder="How does to make" required>
+              </label>
+              <div ng-if="complainform.make.$invalid && !complainform.make.$pristine" class="error-message padding-right">Invalid HOW DOES TO MAKE</div>
+              <!-- <label class="item item-input item-stacked-label no-border" style="padding-top: 5%;"> -->
+                <div class="row no-padding border-bottom" style=" padding-top: 5% !important;">
+                  <div class="col col-80 no-padding">
+                    <h2 class="text-dark fs-14">TWEET TO COMPANY ? <span style="margin: 0px 7px 7px 7px;" class="icon fs-20 ion-information-circled"  ng-click="openPopover($event)"></span></h2>
+                  </div>
+                  <div class="col col-20 no-padding">
+                    <ion-checkbox class="no-border" ng-model="filter.red"></ion-checkbox>
+                  </div>
+                </div>
+              <!-- </label> -->
+
+              <!-- <label class="item item-input item-stacked-label no-border" style="padding-top: 5%;"> -->
+                <div class="row no-padding border-bottom" style=" padding-top: 5% !important;">
+                  <div class="col col-67 no-padding">
+                    <h2 class="text-dark fs-14">SADNESS / ANGER LEVEL?</h2>
+                  </div>
+                  <div class="col col-33 no-padding">
+                    <ionic-ratings style="margin: -5px;" ng-model="complaintForm.rating" name="star" ratingsobj='ratingsObject1' index='$index'></ionic-ratings>
+                    <!-- <span class="sad-active-c"></span><span style="margin-left: 22px !important" class="sad-active-c"></span><span style="margin-left: 44px !important"  class="sad-active-c"></span><span style="margin-left: 66px !important"  class="sad-active-c"></span><span style="margin-left: 88px !important"  class="sad-active-c"></span> -->
+                  </div>
+                </div>
+                <div ng-if="complainform.star.$invalid && !complainform.star.$pristine" class="error-message padding-right">Invalid SADNESS / ANGER LEVEL?</div>
+              <!-- </label> -->
+              </form>
+              <button ng-disabled="complain.$invalid" ng-click="complaintUser()" class="button button-block menu-content text-white">SUBMIT</button>
+              <br /><br /><br />
+            </div>
+         </ion-content>
+        </ion-tab>
+
+      </ion-tabs>
+  </ion-content>
+</ion-view>

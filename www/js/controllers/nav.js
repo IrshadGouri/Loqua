@@ -1,26 +1,32 @@
 angular.module('Nav.controllers', [])
 
-.controller('NavCtrl', function($scope, $ionicPlatform, $rootScope, $ionicActionSheet) {
+.controller('NavCtrl', function($scope, $ionicPlatform, $rootScope, $ionicActionSheet, $state, $localstorage) {
 	$ionicPlatform.ready(function() {
 		
 		// Triggered on a button click, or some other target
 		 $scope.show = function() {
-
+		 	console.log("hihi");
 		   // Show the action sheet
 		   var hideSheet = $ionicActionSheet.show({
 		     buttons: [
-		       { text: '<b class="text-gray">View Profile Picture</b>' },
-		       { text: '<b class="text-gray">Choose New Picture</b>' },
-		       { text: '<b class="text-gray">Take New Picture</b>' }
+		       { text: '<button class="button">Logout</button>' },
+		       { text: '<button class="button">Cancel</button>' }
 		     ],
-		     destructiveText: '<b>Cancel</b>',
-		     cancelText: 'Cancel',
-		     cancel: function() {
-		     	hideSheet();
-	          // add cancel code..
-	         },
+		     // destructiveText: 'Cancel',
+		     // cancelText: 'Cancel',
+		     // cancel: function() {
+		     // 	// hideSheet();
+	      //     // add cancel code..
+	      //    },
 		     buttonClicked: function(index) {
-		       return true;
+		       console.log(index);
+		       if(index==0){
+		       	 $localstorage.set('userId', '');
+		       	 $state.go('login');
+		       }else{
+		       	  hideSheet();
+		       }
+		        return true;
 		     }
 		   });
 

@@ -1,36 +1,30 @@
 angular.module('ResetPassword.controllers', [])
 
-.controller('ResetPasswordCtrl', function($scope, $ionicPlatform, $rootScope, $ionicActionSheet, $timeout) {
+.controller('ResetPasswordCtrl', function($scope, $ionicPlatform, $rootScope, $ionicActionSheet, APIService, $state) {
 	$ionicPlatform.ready(function() {
 		$rootScope.activefeild = 'signout';
+		$scope.resetPasswordForm = {};
+		$scope.resetPassword = function(){
+			console.log($scope.resetPasswordForm);
+			$scope.user = {
+				user: $scope.resetPasswordForm
+			}
+			console.log($scope.user);
+			APIService.updateData({
+	            req_url: 'https://loqua.herokuapp.com/users/password',
+	            data: $scope.user
+	        }).then(function(resp) {
+	        	console.log(resp);
+	        	if(resp.data.success==true){
+			      alert(resp.data.message);
+			      $state.go('nav.home');
+	            }else{
+	            	alert("Invalid Email Id or Password.");
+	            }
+	           },function(err) {
 
-		// Triggered on a button click, or some other target
-		 $scope.show = function() {
-
-		   // Show the action sheet
-		   var hideSheet = $ionicActionSheet.show({
-		     buttons: [
-		       { text: '<b class="text-gray">View Profile Picture</b>' },
-		       { text: '<b class="text-gray">Choose New Picture</b>' },
-		       { text: '<b class="text-gray">Take New Picture</b>' }
-		     ],
-		     destructiveText: '<b>Cancel</b>',
-		     cancelText: 'Cancel',
-		     cancel: function() {
-		     	hideSheet();
-	          // add cancel code..
-	         },
-		     buttonClicked: function(index) {
-		       return true;
-		     }
-		   });
-
-		   // For example's sake, hide the sheet after two seconds
-		   // $timeout(function() {
-		   //   hideSheet();
-		   // }, 2000);
-
-		 };
+	        }); 
+		}
 
 	});
 })
