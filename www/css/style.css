@@ -8,6 +8,9 @@
 div, h1, h2, h3, h4, h5, h6, p, span, input, button{
 	font-family: Quicksand-Regular !important;
 }*/
+.text-red{
+    color: #d50f0f !important;
+}
 .overflow-scroll .scroll{
     overflow-y: scroll !important;
 }
@@ -17,7 +20,7 @@ div, h1, h2, h3, h4, h5, h6, p, span, input, button{
 .popup-body {
     padding: 0px;
     overflow: auto;
-    background: #50e3c2 !important;
+    background: #00e4bf !important;
 }
 .popup-title, h4{
   color: #fff !important;
@@ -29,7 +32,7 @@ div, h1, h2, h3, h4, h5, h6, p, span, input, button{
     padding: 10px;
     overflow: auto;
     border:none !important;
-    background: #50e3c2 !important;
+    background: #00e4bf !important;
 } 
 body.menu-open .side-menu-open{
   transform: translate3d(255px, 0px, 0px) scale(.9) !important;
@@ -144,7 +147,7 @@ ion-header-bar{
 .header-img{
 	width: 140px !important;
     margin-top: 0px !important;
-    height: 44px !important;
+    height: 55px !important;
 }
 td{
     width: 50% !important;
@@ -154,7 +157,7 @@ td{
 	padding-top: 6% !important;
 }*/
 .background-color{
-	background: #50e3c2 !important;
+	background: #00e4bf !important;
 }
 .pane[hide-nav-bar="true"] .has-tabs-top {
      top: 0px !important; 
@@ -174,9 +177,9 @@ td{
 
 
 .tabs-striped.tabs-background-positive .tabs {
-    background-color: #50e3c2 !important;
+    background-color: #00e4bf !important;
     background-image: none;
-    border-color: #50e3c2 !important;
+    border-color: #00e4bf !important;
 }
 .profile-pic{
 	width: 100px;
@@ -276,7 +279,7 @@ td{
 	background: transparent !important;
 }
 .side-menu-active{
-	border-left: 7px solid #50e3c2 !important;
+	border-left: 7px solid #00e4bf !important;
 }
 .background-white{
 	background: #FFF !important;
@@ -487,4 +490,14 @@ td{
     background-size: cover  !important;
     /*margin: 0px 0 0 -34px !important;*/
  }
- 
+ .bar .title {
+    height: 55px;
+ }
+ .first-letter-visible {
+    display:block;
+    visibility:hidden;
+}
+
+.first-letter-visible:first-letter {
+    visibility:visible;
+}​

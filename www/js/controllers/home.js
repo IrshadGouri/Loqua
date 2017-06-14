@@ -1,6 +1,6 @@
 angular.module('Home.controllers', [])
 
-.controller('HomeCtrl', function($scope, $ionicPlatform, $rootScope, APIService, $localstorage, $state, $ionicTabsDelegate) {
+.controller('HomeCtrl', function($scope, $ionicPlatform, $rootScope, $timeout, APIService, $localstorage, $state, $ionicTabsDelegate) {
 	$ionicPlatform.ready(function() {
 		$scope.todays = [];
 		$scope.yesterday_compliments = [];
@@ -29,6 +29,46 @@ angular.module('Home.controllers', [])
 		//      // Perform some action 
 		// }
 
+		$scope.today = function(index){
+			$scope.todayDate = new Date();
+			var dd = $scope.todayDate.getDate();
+			var mm = $scope.todayDate.getMonth()+1; //January is 0!
+			var yyyy = $scope.todayDate.getFullYear();
+
+			if(dd<10) {
+			    dd='0'+dd
+			} 
+
+			if(mm<10) {
+			    mm='0'+mm
+			} 
+
+			$scope.todayDate = mm+'/'+dd+'/'+yyyy;
+			$ionicTabsDelegate.select(index);
+			$scope.yesterdayDate = "YESTERDAY";
+		}
+		$scope.yesterday = function(index){
+			var currentdate = new Date();
+			currentdate.setDate(currentdate.getDate() - 1);
+			$scope.yesterdayDate = currentdate.toJSON().slice(0,10);
+            $scope.yesterdayDate = new Date($scope.yesterdayDate);
+			console.log($scope.yesterdayDate);
+            var dd = $scope.yesterdayDate.getDate();
+			var mm = $scope.yesterdayDate.getMonth()+1; //January is 0!
+			var yyyy = $scope.yesterdayDate.getFullYear();
+
+			if(dd<10) {
+			    dd='0'+dd
+			} 
+
+			if(mm<10) {
+			    mm='0'+mm
+			} 
+
+			$scope.yesterdayDate = mm+'/'+dd+'/'+yyyy;
+			$ionicTabsDelegate.select(index);
+			$scope.todayDate = "TODAY";
+		}
 		
 		
 		
@@ -61,52 +101,4 @@ angular.module('Home.controllers', [])
 			}
 		}
 	});
-})
-
-.controller('TodayCtrl', function($scope, $ionicPlatform, $rootScope, APIService, $localstorage, $state, $ionicTabsDelegate) {
-	$scope.today = function(index){
-			$scope.todayDate = new Date();
-			var dd = $scope.todayDate.getDate();
-			var mm = $scope.todayDate.getMonth()+1; //January is 0!
-			var yyyy = $scope.todayDate.getFullYear();
-
-			if(dd<10) {
-			    dd='0'+dd
-			} 
-
-			if(mm<10) {
-			    mm='0'+mm
-			} 
-
-			$scope.todayDate = mm+'/'+dd+'/'+yyyy;
-			$ionicTabsDelegate.select(index);
-			// document.write($scope.todayDate);
-		}
-	console.log("====sf=============")
-})
-
-.controller('YesterdayCtrl', function($scope, $ionicPlatform, $rootScope, APIService, $localstorage, $state, $ionicTabsDelegate) {
-	$rootScope.yesterday = function(index){
-			var currentdate = new Date();
-			currentdate.setDate(currentdate.getDate() - 1);
-			$scope.yesterdayDate = currentdate.toJSON().slice(0,10);
-            $scope.yesterdayDate = new Date($scope.yesterdayDate);
-			console.log($scope.yesterdayDate);
-            var dd = $scope.yesterdayDate.getDate();
-			var mm = $scope.yesterdayDate.getMonth()+1; //January is 0!
-			var yyyy = $scope.yesterdayDate.getFullYear();
-
-			if(dd<10) {
-			    dd='0'+dd
-			} 
-
-			if(mm<10) {
-			    mm='0'+mm
-			} 
-
-			$scope.yesterdayDate = mm+'/'+dd+'/'+yyyy;
-            console.log($scope.yesterdayDate);
-			$ionicTabsDelegate.select(index);
-		}
-	console.log("====sf============58=")	
 })

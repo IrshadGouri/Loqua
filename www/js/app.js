@@ -6,7 +6,7 @@ var main_url= "https://loqua.herokuapp.com/api/v1/";
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('Laqua', ['ionic', 'Nav.controllers', 'Home.controllers', 'Login.controllers', 'SignUp.controllers', 'Profile.controllers', 'ResetPassword.controllers', 'Complaint.controllers', 'ComplimentDetail.controllers', 'ComplaintDetail.controllers', 'ForgetPassword.controllers', 'ionic-ratings', 'APIModule', 'ngCordova', 'twitterLib'])
+angular.module('Laqua', ['ionic', 'ion-google-autocomplete', 'Nav.controllers', 'Home.controllers', 'Login.controllers', 'SignUp.controllers', 'Profile.controllers', 'ResetPassword.controllers', 'Complaint.controllers', 'ComplimentDetail.controllers', 'ComplaintDetail.controllers', 'ForgetPassword.controllers', 'ionic-ratings', 'APIModule', 'ngCordova', 'twitterLib'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -33,6 +33,11 @@ angular.module('Laqua', ['ionic', 'Nav.controllers', 'Home.controllers', 'Login.
       });
     }
   }
+})
+.filter('capitalize', function() {
+    return function(input) {
+      return (!!input) ? input.charAt(0).toUpperCase() + input.substr(1).toLowerCase() : '';
+    }
 })
 .directive('ionSideMenuContentScale', function($timeout,$rootScope,$ionicModal) {
   return {
@@ -154,7 +159,7 @@ angular.module('Laqua', ['ionic', 'Nav.controllers', 'Home.controllers', 'Login.
     controller: 'ProfileCtrl'
   })
 
-  .state('ResetPasswordCtrl', {
+  .state('resetpassword', {
     url: '/resetpassword',
     cache: false,
     templateUrl: 'templates/resetpassword.html',

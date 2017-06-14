@@ -4,6 +4,10 @@ angular.module('Nav.controllers', [])
 	$ionicPlatform.ready(function() {
 		
 		// Triggered on a button click, or some other target
+
+			$scope.userEmail = $localstorage.get('userEmail');
+			$scope.userFName = $localstorage.get('userFName');
+			$scope.userLName = $localstorage.get('userLName');
 		 $scope.show = function() {
 		 	console.log("hihi");
 		   // Show the action sheet

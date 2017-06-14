@@ -4,16 +4,16 @@
     <button ng-if="userId" class="button button-icon text-white boder-white header-btn-left" menu-toggle="left">Menu</button>
     <div class="h1 title">
     <center>
-      <img src="img/logo.png" class="header-img">
+      <img src="img/logo.jpg" class="header-img">
     </center>
     </div>
     <button ng-if="!userId" ui-sref="login" class="button button-icon text-white boder-white header-btn-right">Sign in</button>
-    <button ng-if="userId"  ui-sref="nav.complaint" class="button button-icon text-white boder-white header-btn-right">Edit</button>
+    <button ng-if="userId"  ui-sref="nav.complaint" class="button button-icon icon ion-edit text-white boder-white header-btn-right"></button>
   </ion-header-bar>
   <ion-content scroll="false">
       <ion-tabs class="tabs-striped tabs-top tabs-background-positive tabs-color-light">
 
-        <ion-tab ng-controller="TodayCtrl" title="{{todayDate}}" ng-click="today('1')" icon-on="" icon-off="">
+        <ion-tab title="{{todayDate}}" ng-click="today(0)" icon-on="" icon-off="">
         <!-- ng-click="today('1')" -->
           <ion-content scroll="true" style="top: 49px !important;">
             <div class="list">
@@ -22,7 +22,7 @@
                 <i ng-if="today.type!='Compliment'" class="sad"></i>
                 <i ng-if="today.type=='Compliment'" class="happy"></i>
                 <p class="text-gray float-right-top fs-12 font-style">{{today.created_at | date:'h:mma'}}</p>
-                <h2 class="margin-5">{{today.user.first_name}} {{today.user.last_name}}<span ng-if="today.type=='Compliment'" class="text-dark"> complimented </span> <span ng-if="today.type!='Compliment'" class="text-dark"> Complainted </span> <span class="text-gray font-style"> {{today.how_does_to_make}} </span><span class="text-green"> @{{today.company_name}} for </span><span class="text-gray font-style"> {{today.description}}</span></h2>
+                <h2 class="margin-5">{{today.user.first_name | capitalize}} {{today.user.last_name | capitalize}} <span ng-if="today.type=='Compliment'" class="text-dark"> complimented </span> <span ng-if="today.type!='Compliment'" class="text-red"> complained </span> <span class="text-gray font-style"> {{today.how_does_to_make}} </span><span class="text-green"> @{{today.company_name}} for </span><span class="text-gray font-style"> {{today.description}}</span></h2>
                 <p style="margin: -3px;" class="text-dark float-right-bottom font-style fs-12 font-700">{{today.where}}</p>
               </a>
 
@@ -31,20 +31,20 @@
           </ion-content>
         </ion-tab>
 
-        <ion-tab ng-controller="YesterdayCtrl" title="{{yesterdayDate| date:'dd/MM/yyyy'}}" ng-click="yesterday('2')"  icon-on="" icon-off="">
+        <ion-tab title="{{yesterdayDate| date:'dd/MM/yyyy'}}" ng-click="yesterday(1)"  icon-on="" icon-off="">
         <!-- ng-click="towmarrow('2')" -->
          <ion-content scroll="true" style="top: 50px !important;">
             <div class="row no-padding">
               <div class="col col-50" style="padding-right: 2.5px;">
                   <a class="item text-center text-white background-green" style="border-color: #ddd !important;">
                     <h2 class="text-white">GOLD STARS</h2>
-                    <span class="icon ion-star"></span><span class="icon ion-star"></span><span class="icon ion-star"></span><span class="icon ion-star"></span><span class="icon ion-star"></span>
+                    <span class="icon ion-happy"></span> <span class="icon ion-happy"></span> <span class="icon ion-happy"></span> <span class="icon ion-happy"></span> <span class="icon ion-happy"></span>
                   </a>
               </div>
               <div class="col col-50" style="padding-left: 2.5px;padding-right: 2% !important;">
                   <a class="item text-center text-white background-red" style="border-color: #ddd !important;">
                     <h2 class="text-white">HEART BREAKERS</h2>
-                    <span class="icon ion-heart-broken"></span> <span class="icon ion-heart-broken"></span> <span class="icon ion-heart-broken"></span> <span class="icon ion-heart-broken"></span> <span class="icon ion-heart-broken"></span>
+                    <span class="icon ion-sad"></span> <span class="icon ion-sad"></span> <span class="icon ion-sad"></span> <span class="icon ion-sad"></span> <span class="icon ion-sad"></span>
                   </a>
               </div>
             </div>

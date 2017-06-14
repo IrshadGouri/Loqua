@@ -4,6 +4,7 @@ angular.module('SignUp.controllers', [])
 	$ionicPlatform.ready(function() {
 		$rootScope.activefeild = 'signout';
 		$scope.signupForm = {};
+		$scope.socialForm = {};
 		$scope.user = [];
 		$scope.ProfilePic = "img/ben.png";
 		// Triggered on a button click, or some other target
@@ -21,7 +22,9 @@ angular.module('SignUp.controllers', [])
 		     cancel: function() {
 		     	hideSheet();
 	          // add cancel code..
-	         },
+	         },destructiveButtonClicked: function() {
+		       return true;
+		     },
 		     buttonClicked: function(index) {
 		      console.log(index);
 		       if(index==0){
@@ -102,12 +105,12 @@ angular.module('SignUp.controllers', [])
 	        	console.log(resp);
 	        	if(resp.data.success){
 	        		localStorage.setItem('userToken', resp.data.auth_token);
-					$localstorage.set('userEmail', resp.data.users.email);
-					$localstorage.set('userFName', resp.data.users.first_name);
-					$localstorage.set('userLName', resp.data.users.last_name);
-					$localstorage.set('userProfile', resp.data.users.social_profile_url);
-					$localstorage.set('userName', resp.data.users.user_name);
-					$localstorage.set('userId', resp.data.users.id);
+					$localstorage.set('userEmail', resp.data.user.email);
+					$localstorage.set('userFName', resp.data.user.first_name);
+					$localstorage.set('userLName', resp.data.user.last_name);
+					$localstorage.set('userProfile', resp.data.user.social_profile_url);
+					$localstorage.set('userName', resp.data.user.user_name);
+					$localstorage.set('userId', resp.data.user.id);
 					$state.go('nav.home');
 	            }else{
 	            	alert("Email Id didn't find. Please use app sign up");
@@ -218,14 +221,14 @@ angular.module('SignUp.controllers', [])
                      //   	$scope.profilepicName = obj.success.image_name;
                         $ionicLoading.hide();
                    }catch(err){
-                      alert(err.message);
+                      //alert(err.message);
                     }
                   }, function(err) {
                     console.log(err);
                     $ionicLoading.hide();
                   }, function (progress) {
                      console.log(progress);
-                    $ionicLoading.hide();
+                    //$ionicLoading.hide();
                   });
                 }catch(err){
                   // alert(err.message);
@@ -250,12 +253,12 @@ angular.module('SignUp.controllers', [])
 	        	if(resp.data.success==true){
 			        $localstorage.set('islogin', '1');
 			        localStorage.setItem('userToken', resp.data.auth_token);
-					$localstorage.set('userEmail', resp.data.users.email);
-					$localstorage.set('userFName', resp.data.users.first_name);
-					$localstorage.set('userLName', resp.data.users.last_name);
-					$localstorage.set('userProfile', resp.data.users.social_profile_url);
-					$localstorage.set('userName', resp.data.users.user_name);
-					$localstorage.set('userId', resp.data.users.id);
+					$localstorage.set('userEmail', resp.data.user.email);
+					$localstorage.set('userFName', resp.data.user.first_name);
+					$localstorage.set('userLName', resp.data.user.last_name);
+					$localstorage.set('userProfile', resp.data.user.social_profile_url);
+					$localstorage.set('userName', resp.data.user.user_name);
+					$localstorage.set('userId', resp.data.user.id);
 	        		$state.go('nav.home');
 	            }else{
 	            	$ionicLoading.hide();

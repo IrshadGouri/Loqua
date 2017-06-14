@@ -1,11 +1,14 @@
 angular.module('Complaint.controllers', [])
 
-.controller('ComplaintCtrl', function($scope, $ionicPlatform, $rootScope, $ionicPopover, TwitterLib, APIService, $state, $localstorage, $ionicPopup) {
+.controller('ComplaintCtrl', function($scope, $ionicModal, $ionicPlatform, $rootScope, $ionicPopover, TwitterLib, APIService, $state, $localstorage, $ionicPopup) {
 	$ionicPlatform.ready(function() {
 	$rootScope.activefeild = 'complain';
+	$scope.placeObj = {};
 	$scope.userId = $localstorage.get('userId');
 	console.log($scope.userId);
 	$scope.complainform = {};
+	$scope.whyhide = true;
+	$scope.whyhide1 = true;
 	$scope.complimentForm = {
 		"user_id" : $scope.userId
 	};
@@ -15,6 +18,57 @@ angular.module('Complaint.controllers', [])
 	};
 	$scope.filter = {};
 	$scope.filter.check = false;
+
+	$ionicModal.fromTemplateUrl('location.html', {
+		    scope: $scope,
+		    animation: 'slide-in-up'
+		  }).then(function(modal) {
+		    $scope.modal = modal;
+		  });
+		  $scope.openModal = function() {
+		    $scope.modal.show();
+		  };
+		  $scope.closeModal = function() {
+		    $scope.modal.hide();
+		  };
+
+
+		$scope.locationChanged = function (location) {
+			console.log(location);
+           $scope.location = location;
+           //displayLocation($scope.location);
+         };
+
+ 
+ 	$scope.selectCompanyName = function(name) {
+ 		$scope.complimentForm.company_name=name;
+ 		$scope.showCompanyList=false;
+ 	}
+ 	$scope.selectCompanyName1 = function(name) {
+ 		$scope.complaintForm.company_name=name;
+ 		$scope.showCompanyList1=false;
+ 	}
+	$scope.getCompanyNames = function(term, type) {
+		if(term!=''){
+			APIService.getData({
+	            req_url: main_url+'users/company_autocomplete?term=' + term ,
+	            data: {}
+	        }).then(function(resp) {
+	        	console.log(resp);
+	        	if(resp.data){
+	        	   $scope.companyList = resp.data;
+	        	   if(type=="complain")
+				   $scope.showCompanyList1 = true;
+				   else
+				   $scope.showCompanyList = true;
+	            }else{
+	            	
+	            }
+	           },function(err) {
+	
+	        });
+	    }
+	}
 	
 
 	$scope.oauth_token = localStorage.getItem("oauth_token");
@@ -28,9 +82,9 @@ angular.module('Complaint.controllers', [])
     		$scope.filter.check = true;
     	}
     }
-	 $scope.ratingsObject = {
-	    iconOn: 'ion-happy', //Optional
-	    iconOff: 'ion-happy', //Optional
+	 $scope.ratingsObject2 = {
+	    iconOn: 'ion-star', //Optional
+	    iconOff: 'ion-star', //Optional
 	    iconOnColor: 'rgb(95, 156, 29)', //Optional
 	    iconOffColor: 'rgb(102, 102, 102)', //Optional
 	    rating: 0, //Optional
@@ -41,8 +95,8 @@ angular.module('Complaint.controllers', [])
 	    }
 	  };
 	  $scope.ratingsObject1 = {
-	    iconOn: 'ion-sad', //Optional
-	    iconOff: 'ion-sad', //Optional
+	    iconOn: 'ion-heart-broken', //Optional
+	    iconOff: 'ion-heart-broken', //Optional
 	    iconOnColor: 'rgb(213, 15, 16)', //Optional
 	    iconOffColor: 'rgb(102, 102, 102)', //Optional
 	    rating: 0, //Optional
@@ -61,8 +115,22 @@ angular.module('Complaint.controllers', [])
 
 	  $scope.choices = [{id: 'choice1'}];
 	  $scope.addNewChoice = function() {
-	    var newItemNo = $scope.choices.length+1;
-	    $scope.choices.push({'id':'choice'+newItemNo});
+	  	if($scope.whyhide == true){
+	  		$scope.whyhide = false;
+	  	}else{
+	  		$scope.whyhide = true;
+	  	}
+	    // var newItemNo = $scope.choices.length+1;
+	    // $scope.choices.push({'id':'choice'+newItemNo});
+	  };
+	  $scope.addNewChoice1 = function() {
+	  	if($scope.whyhide1 == true){
+	  		$scope.whyhide1 = false;
+	  	}else{
+	  		$scope.whyhide1 = true;
+	  	}
+	    // var newItemNo = $scope.choices.length+1;
+	    // $scope.choices.push({'id':'choice'+newItemNo});
 	  };
 	    
 	  $scope.removeChoice = function() {
@@ -183,5 +251,18 @@ angular.module('Complaint.controllers', [])
 		}
 
 
-	});
+	}); 
+
+/*APIService.getData({
+	            req_url: main_url+'users/company_autocomplete',
+	            data: {term:'la'}
+	        }).then(function(resp) {
+	        	console.log(resp);
+	        
+	           },function(err) {
+
+	        });*/ 
+
+
+
 })

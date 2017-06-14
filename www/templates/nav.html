@@ -32,8 +32,8 @@
     <ion-content class="menu-content"> 
      <div class="background-transparent list">
         <div class="item background-transparent" style="padding: 44px;">
-          <h2 class="text-white text-center fs-20">Tony Guy</h2>
-          <p class="text-center fs-16" style="color: #FFF;">tony@gmail.com</p>
+          <h2 class="text-white text-center fs-20">{{userFName}} <span ng-if="userLName!='null'" class="first-letter-visible">{{userLName | capitalize}}</span></h2>
+          <p class="text-center fs-16" style="color: #FFF;">{{userEmail}}</p>
         </div>
         <div ui-sref="nav.home" ng-class="(activefeild == 'home')? 'side-menu-active':''" ng-click="activefeild = 'home'" class="background-transparent item text-white menu-line-height" nav-clear menu-close>
           <img src="img/home.png" align="left" style="width: 25px !important;margin-right: 10px !important;" />

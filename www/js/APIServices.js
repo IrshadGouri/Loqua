@@ -40,10 +40,10 @@ angular.module('APIModule', [])
         'responseError': function(rejection) {
             
             // Returning a rejection
-            $cordovaDialogs.alert('Please try again.', 'Something Want Worng', 'OK')
+            /*$cordovaDialogs.alert('Please try again.', 'Something Want Worng', 'OK')
             .then(function() {
               // callback success
-            });
+            });*/
             var loadingService = $injector.get('$ionicLoading');
             loadingService.hide();
             return rejection;
@@ -56,6 +56,7 @@ angular.module('APIModule', [])
     // $scope.userToken = $localstorage.get('Token');
     return {
         getData: function(obj){
+            console.log("=====obj.data======",obj.data)
             var xhr = $http({
                 url: obj.req_url,
                 method: 'GET',
